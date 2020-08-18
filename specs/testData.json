@@ -1,0 +1,19 @@
+{
+    "signUpPageURL": "https://daliclient.herokuapp.com/login",
+    "expectedRedirectUrl": "https://daliclient.herokuapp.com/",
+
+    "validEmail": "testuser_3@dali.com",
+    "validPassword": "Password123!",
+    "invalidEmail": "testuser_3dali.com",
+    "invalidPassword": "Password123!fbdb",
+
+    "notificationOfInvalidPassword": "Wrong password entered"
+    
+}
+    
+
+
+
+
+
+
