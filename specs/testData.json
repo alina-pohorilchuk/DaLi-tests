@@ -1,9 +1,9 @@
 {
-    "signUpPageURL": "https://daliclient.herokuapp.com/login",
-    "expectedRedirectUrl": "https://daliclient.herokuapp.com/",
+    "signUpPageURL": "http://bsa-dali.s3-website.us-east-2.amazonaws.com/login",
+    "expectedRedirectUrl": "http://bsa-dali.s3-website.us-east-2.amazonaws.com/",
 
-    "validEmail": "testuser_3@dali.com",
-    "validPassword": "Password123!",
+    "validEmail": "test.user@dali.com",
+    "validPassword": "Pa55word!",
     "invalidEmail": "testuser_3dali.com",
     "invalidPassword": "Password123!fbdb",
 
