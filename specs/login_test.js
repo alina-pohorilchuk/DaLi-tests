@@ -28,4 +28,15 @@ describe("Tests for login page", () => {
       testData.notificationOfInvalidPassword
     );
   });
+  it("Log in to the system of a user with invalid credentials", () => {
+    browser.url(testData.signUpPageURL);
+    loginActions.userLogIn(testData.invalidEmail, testData.invalidPassword);
+    browser.waitUntil(function () {
+      return browser.getUrl() == testData.signUpPageURL;
+    }, 5000);
+    assert.equal(
+      loginActions.getNotficationDangerText(),
+      testData.notificationOfNotFoundUser
+    );
+  });
 });
