@@ -4,10 +4,11 @@
 
     "validEmail": "test.user@dali.com",
     "validPassword": "Pa55word!",
-    "invalidEmail": "testuser_3dali.com",
+    "invalidEmail": "test.user@daliee.com",
     "invalidPassword": "Password123!fbdb",
 
-    "notificationOfInvalidPassword": "Wrong password entered"
+    "notificationOfInvalidPassword": "Wrong password entered",
+    "notificationOfNotFoundUser": "User with such email was not found"
     
 }
     
