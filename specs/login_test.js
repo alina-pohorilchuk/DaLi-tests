@@ -16,7 +16,7 @@ describe("Tests for login page", () => {
       return browser.getUrl() == testData.expectedRedirectUrl;
     }, 5000);
   });
-  it("Log in to the system of a reviously registered user with valid email and invalid password", () => {
+  it("Log in to the system of a previously registered user with valid email and invalid password", () => {
     browser.url(testData.signUpPageURL);
     loginActions.userLogIn(testData.validEmail, testData.invalidPassword);
     browser.waitUntil(function () {
@@ -38,5 +38,32 @@ describe("Tests for login page", () => {
       loginActions.getNotficationDangerText(),
       testData.notificationOfNotFoundUser
     );
+  });
+  // does not work yet, as the functionality is not ready yet. the test will be finalized later
+  xit("Log in, using 'remember me' checkbox", () => {
+    browser.url(testData.signUpPageURL);
+    loginActions.userLogInWithCheckbox(
+      testData.validEmail,
+      testData.validPassword
+    );
+    browser.pause(1000);
+    browser.reloadSession();
+    browser.url(testData.expectedRedirectUrl);
+    browser.waitUntil(function () {
+      return browser.getUrl() == testData.expectedRedirectUrl;
+    }, 5000);
+  });
+
+  it("Try to log in, using button 'forgot password'", () => {
+    browser.url(testData.signUpPageURL);
+    loginActions.clickForgotPassword();
+    assert.equal(
+      loginActions.getModalText(),
+      testData.notificationOfForgotPassword
+    );
+    loginActions.clickCloseModalButton();
+    browser.waitUntil(function () {
+      return browser.getUrl() == testData.signUpPageURL;
+    }, 5000);
   });
 });

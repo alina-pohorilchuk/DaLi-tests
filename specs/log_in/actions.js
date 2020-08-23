@@ -12,6 +12,15 @@ class Actions {
   clickButton() {
     loginElements.signInButton.click();
   }
+  clickCheckbox() {
+    loginElements.checkbox.click();
+  }
+  clickForgotPassword() {
+    loginElements.forgotPassword.click();
+  }
+  clickCloseModalButton() {
+    loginElements.closeModalButton.click();
+  }
 
   userLogIn(email, password) {
     this.setEmail(email);
@@ -19,8 +28,18 @@ class Actions {
     this.clickButton();
   }
 
+  userLogInWithCheckbox(email, password) {
+    this.setEmail(email);
+    this.setPassword(password);
+    this.clickCheckbox();
+    this.clickButton();
+  }
+
   getNotficationDangerText() {
     return loginElements.notificationDangerText.getText();
+  }
+  getModalText() {
+    return loginElements.notificationOfForgotPassword.getText();
   }
 }
 
