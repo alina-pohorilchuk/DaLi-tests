@@ -9,7 +9,11 @@
 
     "notificationOfInvalidPassword": "Wrong password entered",
     "notificationOfNotFoundUser": "User with such email was not found",
-    "notificationOfForgotPassword": "Please contact an administrator to reset your password"
+    "notificationOfForgotPassword": "Please contact an administrator to reset your password",
+
+
+    "defoltEmail": "dale.test@gmail.com",
+    "defoltPassword": "Pa55sword!"
 }
     
 

@@ -1,29 +1,24 @@
 const assert = require("assert");
 const testData = require("./testData.json");
-const LoginActions = require("./log_in/actions");
-const HomePageActions = require("./pages/homePage/homePageActions");
-//const DataSourcePageActions = require("./pages/dataSourcePage/dataSourcePageActions");
-//const TablePageActions = require("./pages/tablePage/tablePageActions");
 
+const Login = require("./pages/loginPageObject");
+const login = new Login();
 
-const loginActions = new LoginActions();
-const homePageActions = new HomePageActions();
-//const dataSourcePageActions = new DataSourcePageActions();
-//const tablePageActions = new TablePageActions();
+const Header = require("./pages/headerMoveTo");
+const header = new Header();
 
+const DataBase = require("./pages/dataBaseHelper");
+const dataBase = new DataBase();
 
-describe("Tests for bar chart visualisation", () => {
+describe("Create bar chart visualisations", () => {
     
     beforeEach(() => {
-        browser.url(testData.signUpPageURL);
-        loginActions.userLogIn(testData.validEmail, testData.validPassword);
-  //      homePageActions.openBrowseData(); // уточняем именно этот момент
-  //      browser.refresh();
-  //      browser.pause(5000);
-  //      dataSourcePageActions.openBrowseData(); // уточняем именно этот момент
-  //      browser.pause(5000);
-  //      tablePageActions.openBrowseData();
-  //      browser.pause(5000);
+        browser.url(testData.signUpPageURL); //open browser
+        login.login();
+        login.isLogedIn();
+        header.moveToDataSource();
+        dataBase.choiseDataBase();
+        dataBase.choiseTable();
       });
        
     afterEach(() => {
@@ -32,7 +27,7 @@ describe("Tests for bar chart visualisation", () => {
  
 
       it("CreateBarChartVisualisation", () => {
-          
+        dataBase.choiseVisualisationBarType();
       });
 
 });
