@@ -9,14 +9,14 @@ describe("Tests for login page", () => {
     browser.reloadSession();
   });
 
-  it("Log in to the system of a previously registered user with valid credentials", () => {
+  xit("Log in to the system of a previously registered user with valid credentials", () => {
     browser.url(testData.signUpPageURL);
     loginActions.userLogIn(testData.validEmail, testData.validPassword);
     browser.waitUntil(function () {
       return browser.getUrl() == testData.expectedRedirectUrl;
     }, 5000);
   });
-  it("Log in to the system of a previously registered user with valid email and invalid password", () => {
+  xit("Log in to the system of a previously registered user with valid email and invalid password", () => {
     browser.url(testData.signUpPageURL);
     loginActions.userLogIn(testData.validEmail, testData.invalidPassword);
     browser.waitUntil(function () {
@@ -28,7 +28,7 @@ describe("Tests for login page", () => {
       testData.notificationOfInvalidPassword
     );
   });
-  it("Log in to the system of a user with invalid credentials", () => {
+  xit("Log in to the system of a user with invalid credentials", () => {
     browser.url(testData.signUpPageURL);
     loginActions.userLogIn(testData.invalidEmail, testData.invalidPassword);
     browser.waitUntil(function () {
@@ -54,7 +54,7 @@ describe("Tests for login page", () => {
     }, 5000);
   });
 
-  it("Try to log in, using button 'forgot password'", () => {
+  xit("Try to log in, using button 'forgot password'", () => {
     browser.url(testData.signUpPageURL);
     loginActions.clickForgotPassword();
     assert.equal(
