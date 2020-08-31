@@ -1,5 +1,5 @@
 const LoginElements = require("./elements");
-
+const assert = require("assert");
 const loginElements = new LoginElements();
 
 class Actions {
@@ -9,7 +9,7 @@ class Actions {
   setPassword(password) {
     loginElements.fieldPassword.setValue(password);
   }
-  clickButton() {
+  clickButtonSignIn() {
     loginElements.signInButton.click();
   }
   clickCheckbox() {
@@ -25,14 +25,14 @@ class Actions {
   userLogIn(email, password) {
     this.setEmail(email);
     this.setPassword(password);
-    this.clickButton();
+    this.clickButtonSignIn();
   }
 
   userLogInWithCheckbox(email, password) {
     this.setEmail(email);
     this.setPassword(password);
     this.clickCheckbox();
-    this.clickButton();
+    this.clickButtonSignIn();
   }
 
   getNotficationDangerText() {
@@ -40,6 +40,30 @@ class Actions {
   }
   getModalText() {
     return loginElements.notificationOfForgotPassword.getText();
+  }
+  checkThatBrowseDataButtonExist() {
+    loginElements.browseDataButton.waitForDisplayed(10000);
+    assert.equal(loginElements.browseDataButton.isExisting(), true);
+  }
+
+  checkThatSignInButtonExist() {
+    loginElements.signInButton.waitForDisplayed(10000);
+    assert.equal(loginElements.signInButton.isExisting(), true);
+  }
+
+  checkNotificationWrongPassword(notificationOfInvalidPassword) {
+    assert.equal(
+      this.getNotficationDangerText(),
+      notificationOfInvalidPassword
+    );
+  }
+
+  checkNotificationUserNotFound(notificationOfNotFoundUser) {
+    assert.equal(this.getNotficationDangerText(), notificationOfNotFoundUser);
+  }
+
+  checkForgotPasswordMessage(notificationOfForgotPassword) {
+    assert.equal(this.getModalText(), notificationOfForgotPassword);
   }
 }
 

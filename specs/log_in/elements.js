@@ -23,6 +23,9 @@ class Elements {
   get closeModalButton() {
     return $("button.close-btn");
   }
+  get browseDataButton() {
+    return $("#root > header:nth-child(1) > div.header-controls > div");
+  }
 }
 
 module.exports = Elements;

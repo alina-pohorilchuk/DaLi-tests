@@ -8,7 +8,7 @@
     "invalidEmail": "test.user@daliee.com",
     "invalidPassword": "Password123!fbdb",
 
-    "notificationOfInvalidPassword": "Wrong password entered",
+    "notificationOfInvalidPassword": "Passwords do not match.",
     "notificationOfNotFoundUser": "User with such email was not found",
     "notificationOfForgotPassword": "Please contact an administrator to reset your password",
 

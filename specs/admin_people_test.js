@@ -12,7 +12,7 @@ describe("Tests for create and inactivate user", () => {
     loginActions.userLogIn(testData.validEmail, testData.validPassword);
   });
 
-  it("Creating new user should be successful with valid data", () => {
+  xit("Creating new user should be successful with valid data", () => {
     const email = "user" + new Date().getTime() + "@gmail.com";
     adminPeopleActions.navigateToAdminPage();
     adminPeopleActions.callCreateUserModal();
