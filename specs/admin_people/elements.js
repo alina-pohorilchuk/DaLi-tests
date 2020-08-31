@@ -2,14 +2,28 @@ class Elements {
   get menuBar() {
     return $("header .MuiSvgIcon-root:nth-child(3)");
   }
+  get menuBarAdminPage() {
+    return $("svg.MuiSvgIcon-root.header-icons.MuiSvgIcon-fontSizeLarge");
+  }
+
   get adminPage() {
     return $(
       "#simple-menu > div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > ul > li:nth-child(2)"
     );
   }
+  get signOut() {
+    return $(
+      "#simple-menu > div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > ul > li:nth-child(3)"
+    );
+  }
+  get signOutAdminPage() {
+    return $(
+      "#simple-menu > div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > ul > li:nth-child(3)"
+    );
+  }
 
   get buttonAddSomeone() {
-    return $('//*[@id="root"]/main/div/div[2]/div/div[1]/button/span[1]');
+    return $("button.MuiButtonBase-root.MuiButton-root.MuiButton-contained");
   }
   get firstNameField() {
     return $("input[name = firstName]");
@@ -25,12 +39,18 @@ class Elements {
       "div.MuiDialogActions-root.addUserModalFooter.MuiDialogActions-spacing > button:nth-child(2)"
     );
   }
-  get generatedPassword() {}
+  get browseDataButton() {
+    return $("#root > header:nth-child(1) > div.header-controls > div");
+  }
 
   get modalWindow() {
     return $(
       "body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div"
     );
+  }
+
+  get closeModalWindow() {
+    return $("button.MuiButtonBase-root.MuiButton-root.MuiButton-text");
   }
 
   get passwordField() {

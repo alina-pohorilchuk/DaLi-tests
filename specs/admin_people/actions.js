@@ -1,4 +1,5 @@
 const AdminPeopleElements = require("./elements");
+const { assert } = require("chai");
 const adminPeopleElements = new AdminPeopleElements();
 
 class Actions {
@@ -40,7 +41,22 @@ class Actions {
     return adminPeopleElements.passwordField.getAttribute("value");
   }
 
-  navigateToNewPasswordWindow() {}
+  navigateToSignOut() {
+    adminPeopleElements.menuBarAdminPage.waitForDisplayed(10000);
+    adminPeopleElements.menuBarAdminPage.click();
+    adminPeopleElements.signOut.waitForDisplayed(10000);
+    adminPeopleElements.signOut.click();
+  }
+
+  closeModalWindow() {
+    adminPeopleElements.closeModalWindow.waitForDisplayed(10000);
+    adminPeopleElements.closeModalWindow.click();
+  }
+
+  checkThatBrowseDataButtonExist() {
+    adminPeopleElements.browseDataButton.waitForDisplayed(10000);
+    assert.equal(adminPeopleElements.browseDataButton.isExisting(), true);
+  }
 }
 
 module.exports = Actions;
