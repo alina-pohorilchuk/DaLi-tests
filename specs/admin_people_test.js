@@ -1,4 +1,3 @@
-const assert = require("assert");
 const testData = require("./testData.json");
 
 const AdminPeopleActions = require("./admin_people/actions");
