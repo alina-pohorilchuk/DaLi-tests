@@ -1,5 +1,5 @@
 const AdminPeopleElements = require("./elements");
-const { assert } = require("assert");
+const assert = require("assert");
 const adminPeopleElements = new AdminPeopleElements();
 
 class Actions {
