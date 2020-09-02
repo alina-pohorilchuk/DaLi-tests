@@ -9,7 +9,7 @@
     "invalidPassword": "Password123!fbdb",
 
     "notificationOfInvalidPassword": "Passwords do not match.",
-    "notificationOfNotFoundUser": "User with such email was not found",
+    "notificationOfNotFoundUser": "User with such email was not found.",
     "notificationOfForgotPassword": "Please contact an administrator to reset your password",
 
 

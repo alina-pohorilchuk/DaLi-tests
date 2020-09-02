@@ -1,6 +1,6 @@
 class Elements {
   get fieldEmail() {
-    return $("#email");
+    return $("#login-email");
   }
   get fieldPassword() {
     return $("input[type = password]");

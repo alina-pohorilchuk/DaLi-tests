@@ -13,13 +13,13 @@ describe("Tests for login page", () => {
     browser.reloadSession();
   });
 
-  it("Log in to the system of a previously registered user with valid credentials", () => {
+  xit("Log in to the system of a previously registered user with valid credentials", () => {
     loginActions.setEmail(testData.validEmail);
     loginActions.setPassword(testData.validPassword);
     loginActions.clickButtonSignIn();
     loginActions.checkThatBrowseDataButtonExist();
   });
-  it("Log in to the system of a previously registered user with valid email and invalid password", () => {
+  xit("Log in to the system of a previously registered user with valid email and invalid password", () => {
     loginActions.setEmail(testData.validEmail);
     loginActions.setPassword(testData.invalidPassword);
     loginActions.clickButtonSignIn();
@@ -29,7 +29,7 @@ describe("Tests for login page", () => {
     );
   });
 
-  it("Log in to the system of a user with invalid credentials", () => {
+  xit("Log in to the system of a user with invalid credentials", () => {
     loginActions.setEmail(testData.invalidEmail);
     loginActions.setPassword(testData.invalidPassword);
     loginActions.clickButtonSignIn();
@@ -38,8 +38,7 @@ describe("Tests for login page", () => {
       testData.notificationOfNotFoundUser
     );
   });
-
-  it("Try to log in, using button 'forgot password'", () => {
+  xit("Try to log in, using button 'forgot password'", () => {
     loginActions.clickForgotPassword();
     loginActions.checkForgotPasswordMessage(
       testData.notificationOfForgotPassword

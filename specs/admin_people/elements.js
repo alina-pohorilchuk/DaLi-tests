@@ -7,9 +7,7 @@ class Elements {
   }
 
   get adminPage() {
-    return $(
-      "#simple-menu > div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > ul > li:nth-child(2)"
-    );
+    return $("#header-gear-admin");
   }
   get signOut() {
     return $(
@@ -26,18 +24,16 @@ class Elements {
     return $("button.MuiButtonBase-root.MuiButton-root.MuiButton-contained");
   }
   get firstNameField() {
-    return $("input[name = firstName]");
+    return $("#createUser-firstName");
   }
   get lastNameField() {
-    return $("input[name = lastName]");
+    return $("#createUser-lastName");
   }
   get emailField() {
-    return $("input[name = email]");
+    return $("#createUser-email");
   }
   get submitButton() {
-    return $(
-      "div.MuiDialogActions-root.addUserModalFooter.MuiDialogActions-spacing > button:nth-child(2)"
-    );
+    return $("#createUser-create");
   }
   get browseDataButton() {
     return $("#root > header:nth-child(1) > div.header-controls > div");
@@ -50,11 +46,11 @@ class Elements {
   }
 
   get closeModalWindow() {
-    return $("button.MuiButtonBase-root.MuiButton-root.MuiButton-text");
+    return $("#newPassword-done");
   }
 
   get passwordField() {
-    return $("/html/body/div[3]/div[3]/div[3]/input");
+    return $("#newPassword-pass");
   }
 }
 

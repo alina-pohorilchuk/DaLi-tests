@@ -13,10 +13,9 @@ class Actions {
     adminPeopleElements.adminPage.waitForDisplayed(10000);
     adminPeopleElements.adminPage.click();
   }
-  callCreateUserModal() {
+  openCreateUserModal() {
     adminPeopleElements.buttonAddSomeone.waitForDisplayed(10000);
     adminPeopleElements.buttonAddSomeone.click();
-    adminPeopleElements.modalWindow.waitForDisplayed(10000);
   }
   setFirstName(value) {
     adminPeopleElements.firstNameField.waitForDisplayed(10000);
