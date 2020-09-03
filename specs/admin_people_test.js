@@ -11,6 +11,9 @@ describe("Tests for create and inactivate user", () => {
     browser.url(testData.signUpPageURL);
     loginActions.userLogIn(testData.validEmail, testData.validPassword);
   });
+  afterEach(() => {
+    browser.reloadSession();
+  });
 
   xit("Creating new user should be successful with valid data", () => {
     const email = "user" + new Date().getTime() + "@gmail.com";
@@ -49,6 +52,7 @@ describe("Tests for create and inactivate user", () => {
     for (let i = 1; i < elements.length; i++) {
       const element = elements[i];
       const sameUser = element.getHTML().includes(email);
+
       if (sameUser) {
         const dots = element.$("td:nth-child(5) svg");
         dots.scrollIntoView();

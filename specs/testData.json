@@ -14,8 +14,9 @@
 
 
     "firstNameField": "Test",
-    "lastNameField": "User"
+    "lastNameField": "User",
 
+    "groupName": "My first group"
 }
     
 

@@ -1,9 +1,9 @@
 class Elements {
   get menuBar() {
-    return $("header .MuiSvgIcon-root:nth-child(3)");
+    return $("#header-gear");
   }
   get menuBarAdminPage() {
-    return $("svg.MuiSvgIcon-root.header-icons.MuiSvgIcon-fontSizeLarge");
+    return $("#header-gear-admin");
   }
 
   get adminPage() {

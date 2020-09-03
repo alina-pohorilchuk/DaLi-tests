@@ -13,13 +13,13 @@ describe("Tests for login page", () => {
     browser.reloadSession();
   });
 
-  xit("Log in to the system of a previously registered user with valid credentials", () => {
+  xit("Log in of a previously registered user with valid credentials should be successful", () => {
     loginActions.setEmail(testData.validEmail);
     loginActions.setPassword(testData.validPassword);
     loginActions.clickButtonSignIn();
     loginActions.checkThatBrowseDataButtonExist();
   });
-  xit("Log in to the system of a previously registered user with valid email and invalid password", () => {
+  xit("Log in to of a previously registered user with valid email and invalid password should be failed", () => {
     loginActions.setEmail(testData.validEmail);
     loginActions.setPassword(testData.invalidPassword);
     loginActions.clickButtonSignIn();
@@ -29,7 +29,7 @@ describe("Tests for login page", () => {
     );
   });
 
-  xit("Log in to the system of a user with invalid credentials", () => {
+  xit("Log in to the system of a user with invalid credentials should be failed", () => {
     loginActions.setEmail(testData.invalidEmail);
     loginActions.setPassword(testData.invalidPassword);
     loginActions.clickButtonSignIn();

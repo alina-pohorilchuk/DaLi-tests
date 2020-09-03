@@ -4,7 +4,7 @@ const adminPeopleElements = new AdminPeopleElements();
 
 class Actions {
   openMenu() {
-    admin_peopleElements.menuBar.click();
+    adminPeopleElements.menuBar.click();
   }
 
   navigateToAdminPage() {
