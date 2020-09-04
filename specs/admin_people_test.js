@@ -46,27 +46,25 @@ describe("Tests for create and inactivate user", () => {
     adminPeopleActions.closeModalWindow();
 
     $(".MuiTableRow-root").waitForDisplayed(10000);
-    console.log(0);
+
+    let dots = null;
     const elements = $$(".MuiTableRow-root");
-    console.log(elements.length);
     for (let i = 1; i < elements.length; i++) {
       const element = elements[i];
       const sameUser = element.getHTML().includes(email);
-
       if (sameUser) {
-        const dots = element.$("td:nth-child(5) svg");
-        dots.scrollIntoView();
-        console.log(
-          email,
-          dots.isDisplayedInViewport(),
-          element.$("td:nth-child(2)").getHTML()
-        );
-        dots.click();
-        $("#admin-people-deactivateUser").waitForDisplayed(10000);
-        $("#admin-people-deactivateUser").click();
+        dots = element.$("td:nth-child(5)");
         break;
       }
     }
+    // dots = elements[elements.length - 1].$("td:nth-child(5)");
+    // const dots = $(
+    //   `/html/body/div[1]/main/div/div[2]/div/div[2]/div/div/table/tbody/tr/td[2][contains(text(), "${email}")]/parent::tr/td[5]`
+    // );
+
+    dots.click();
+    $("#admin-people-deactivateUser").waitForDisplayed(1000);
+    $("#admin-people-deactivateUser").click();
     browser.pause(10000);
   });
 
