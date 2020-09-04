@@ -34,40 +34,46 @@ describe("Tests for create and inactivate user", () => {
 
   it("Deactivation of the user should make it impossible for him to log in", () => {
     const email = "user" + new Date().getTime() + "@gmail.com";
+    console.log(email);
     adminPeopleActions.navigateToAdminPage();
     adminPeopleActions.openCreateUserModal();
-    adminPeopleActions.setFirstName(testData.firstNameField);
-
+    browser.pause(1000);
+    adminPeopleActions.setFirstName(email);
+    browser.pause(1000);
     adminPeopleActions.setLastName(testData.lastNameField);
+    browser.pause(1000);
     adminPeopleActions.setEmail(email);
+    browser.pause(1000);
     adminPeopleActions.submitForm();
 
     const password = adminPeopleActions.getPassword();
     adminPeopleActions.closeModalWindow();
 
-    $(".MuiTableRow-root").waitForDisplayed(10000);
-    console.log(0);
-    const elements = $$(".MuiTableRow-root");
-    console.log(elements.length);
-    for (let i = 1; i < elements.length; i++) {
-      const element = elements[i];
-      const sameUser = element.getHTML().includes(email);
+    console.log("waiting");
+    const dots = $(
+      `/html/body/div[1]/main/div/div[2]/div/div[2]/div/div/table/tbody/tr/td[2][contains(text(), "${email}")]/parent::tr/td[5]`
+    );
 
-      if (sameUser) {
-        const dots = element.$("td:nth-child(5) svg");
-        dots.scrollIntoView();
-        console.log(
-          email,
-          dots.isDisplayedInViewport(),
-          element.$("td:nth-child(2)").getHTML()
-        );
+    // dots.waitForDisplayed(10000);
+    // dots.click();
+    // console.log('clicked')
+    // $("#admin-people-deactivateUser").waitForDisplayed(10000);
+    // $("#admin-people-deactivateUser").click();
+    // browser.pause(10000);
+
+    dots.waitUntil(() => {
+      if (!$("#admin-people-deactivateUser").isDisplayed()) {
+        console.log("clicked");
         dots.click();
-        $("#admin-people-deactivateUser").waitForDisplayed(10000);
-        $("#admin-people-deactivateUser").click();
-        break;
+        return false;
       }
-    }
+      return true;
+    });
+    $("#admin-people-deactivateUser").waitForDisplayed(1000);
+    $("#admin-people-deactivateUser").click();
     browser.pause(10000);
+
+    const spinner = $('//*[@id="root"]/main/div/div[2]/div/svg');
   });
 
   xit("After reactivation, the user should be able to log in", () => {});
