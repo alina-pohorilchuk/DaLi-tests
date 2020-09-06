@@ -45,12 +45,22 @@ class Elements {
     );
   }
 
+  get confirmDeactivateButton() {
+    return $("#deactivateUser-deactivate");
+  }
+
   get closeModalWindow() {
     return $("#newPassword-done");
   }
 
   get passwordField() {
     return $("#newPassword-pass");
+  }
+
+  get notificationDangerText() {
+    return $(
+      "#root > main > div > div.MuiSnackbar-root.MuiSnackbar-anchorOriginTopCenter > div > div.MuiAlert-message"
+    );
   }
 }
 

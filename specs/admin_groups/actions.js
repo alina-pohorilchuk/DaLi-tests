@@ -10,14 +10,26 @@ class Actions {
   navigateToCreateGroupButton() {
     adminGroupsElements.createGroupButton.waitForDisplayed(10000);
     adminGroupsElements.createGroupButton.click();
+    adminGroupsElements.createGroupButton.waitForDisplayed(10000);
   }
   addGroupName(groupName) {
     adminGroupsElements.groupNameField.waitForDisplayed(10000);
     adminGroupsElements.groupNameField.setValue(groupName);
   }
   clickAddGroupButton() {
-    adminGroupsElements.AddGroupButton.waitForClickable(10000);
+    adminGroupsElements.AddGroupButton.waitForEnabled(10000);
     adminGroupsElements.AddGroupButton.click();
+  }
+
+  getNotficationDangerText() {
+    return adminGroupsElements.notificationDangerText.getText();
+  }
+
+  checkNotificationNonUniqueGroupName(notificationOfNonUniqueGroupName) {
+    assert.equal(
+      this.getNotficationDangerText(),
+      notificationOfNonUniqueGroupName
+    );
   }
 }
 

@@ -52,6 +52,11 @@ class Actions {
     adminPeopleElements.closeModalWindow.click();
   }
 
+  confirmDeactivatingUser() {
+    adminPeopleElements.confirmDeactivateButton.waitForDisplayed(10000);
+    adminPeopleElements.confirmDeactivateButton.click();
+  }
+
   checkThatBrowseDataButtonExist() {
     adminPeopleElements.browseDataButton.waitForDisplayed(10000);
     assert.equal(adminPeopleElements.browseDataButton.isExisting(), true);

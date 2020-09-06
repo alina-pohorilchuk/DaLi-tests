@@ -4,19 +4,22 @@
     "browseDataUrl": "http://bsa-dali.s3-website.us-east-2.amazonaws.com/data-sources",
 
     "validEmail": "test.user@dali.com",
-    "validPassword": "VG;AR7iV",
+    "validPassword": "VG@AR7iV",
     "invalidEmail": "test.user@daliee.com",
     "invalidPassword": "Password123!fbdb",
 
     "notificationOfInvalidPassword": "Passwords do not match.",
     "notificationOfNotFoundUser": "User with such email was not found.",
     "notificationOfForgotPassword": "Please contact an administrator to reset your password",
+    "notificationOfNonUniqueGroupName": "name must be unique",
 
 
     "firstNameField": "Test",
     "lastNameField": "User",
 
-    "groupName": "My first group"
+
+    "existingGroupName": "Administrators"
+  
 }
     
 
