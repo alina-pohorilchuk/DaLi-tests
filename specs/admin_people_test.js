@@ -49,11 +49,11 @@ describe("Tests for create and inactivate user", () => {
 
     console.log("waiting");
     const dots = $(
-      `/html/body/div[1]/main/div/div[2]/div[2]/table/tbody/tr/td[2][contains(text(), "${email}")]/parent::tr/td[5]`
+      `/html/body/div[1]/main/div/div[2]/div/div[2]/div/div/table/tbody/tr/td[2][contains(text(), "${email}")]/parent::tr/td[5]`
     );
 
     dots.waitForDisplayed(10000);
-    dots.scrollIntoView(10000);
+    dots.click();
     dots.click();
     console.log("clicked");
     $("#admin-people-deactivateUser").waitForDisplayed(10000);
@@ -78,4 +78,6 @@ describe("Tests for create and inactivate user", () => {
   });
 
   xit("After reactivation, the user should be able to log in", () => {});
+  xit("After changing users data, the user should be able to log in", () => {});
+  xit("After recet password, the user should be able to log in", () => {});
 });

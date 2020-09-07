@@ -48,4 +48,7 @@ describe("Tests for create and remove groups", () => {
   xit("Adding member to the group should be successful", () => {});
 
   xit("Removing members from the group should be successful", () => {});
+  xit("Changing the name of the group should be successful", () => {});
+  xit("Changing the name of the group should be successful", () => {});
+  xit("Removing group should be successful", () => {});
 });

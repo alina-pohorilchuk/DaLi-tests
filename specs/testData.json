@@ -3,8 +3,8 @@
     "expectedRedirectUrl": "http://bsa-dali.s3-website.us-east-2.amazonaws.com/",
     "browseDataUrl": "http://bsa-dali.s3-website.us-east-2.amazonaws.com/data-sources",
 
-    "validEmail": "test.user@dali.com",
-    "validPassword": "VG@AR7iV",
+    "validEmail": "dali@mail.com",
+    "validPassword": "b!#Sv5SS",
     "invalidEmail": "test.user@daliee.com",
     "invalidPassword": "Password123!fbdb",
 
