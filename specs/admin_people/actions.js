@@ -95,6 +95,26 @@ class Actions {
       notificationOfDeactivatingAccount
     );
   }
+
+  clickToDeactivatedTab() {
+    adminPeopleElements.deactivatedTab.scrollIntoView();
+    adminPeopleElements.deactivatedTab.moveTo();
+    adminPeopleElements.deactivatedTab.click();
+  }
+
+  clickReactivateUserButton(email) {
+    const reactivate = adminPeopleElements.getReactivateButton(email);
+    reactivate.waitForDisplayed(2000);
+    reactivate.waitForClickable();
+    reactivate.moveTo();
+    reactivate.click();
+  }
+
+  waitWhenNotificationDissapears() {
+    adminPeopleElements.notificationDangerText.waitForDisplayed({
+      reverse: true,
+    });
+  }
 }
 
 module.exports = Actions;

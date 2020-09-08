@@ -32,7 +32,7 @@ describe("Tests for create and inactivate user", () => {
     adminPeopleActions.checkThatBrowseDataButtonExist();
   });
 
-  it("Deactivation of the user should make it impossible for him to log in", () => {
+  xit("Deactivation of the user should make it impossible for him to log in", () => {
     const email = "user" + new Date().getTime() + "@gmail.com";
     adminPeopleActions.navigateToAdminPage();
     adminPeopleActions.openCreateUserModal();
@@ -46,11 +46,8 @@ describe("Tests for create and inactivate user", () => {
 
     adminPeopleActions.navigateToElipsisMenu(email);
     adminPeopleActions.navigateToDeactivateUser();
-    console.log(1);
     adminPeopleActions.confirmDeactivatingUser();
-    console.log(2);
     browser.reloadSession();
-    console.log(3);
     browser.url(testData.signUpPageURL);
     loginActions.userLogIn(email, password);
     adminPeopleActions.checkNotificationDeactivationAccount(
@@ -58,7 +55,33 @@ describe("Tests for create and inactivate user", () => {
     );
   });
 
-  xit("After reactivation, the user should be able to log in", () => {});
+  it("After reactivation, the user should be able to log in", () => {
+    const email = "user" + new Date().getTime() + "@gmail.com";
+    adminPeopleActions.navigateToAdminPage();
+    adminPeopleActions.openCreateUserModal();
+    adminPeopleActions.setFirstName(email);
+    adminPeopleActions.setLastName(testData.lastNameField);
+    adminPeopleActions.setEmail(email);
+    adminPeopleActions.submitForm();
+
+    const password = adminPeopleActions.getPassword();
+    adminPeopleActions.closeModalWindow();
+
+    adminPeopleActions.navigateToElipsisMenu(email);
+    adminPeopleActions.navigateToDeactivateUser();
+    adminPeopleActions.confirmDeactivatingUser();
+
+    adminPeopleActions.waitWhenNotificationDissapears();
+
+    adminPeopleActions.clickToDeactivatedTab();
+    adminPeopleActions.clickReactivateUserButton(email);
+
+    browser.reloadSession();
+
+    browser.url(testData.signUpPageURL);
+    loginActions.userLogIn(email, password);
+    loginActions.checkThatBrowseDataButtonExist();
+  });
   xit("After changing users data, the user should be able to log in", () => {});
   xit("After reset password, the user should be able to log in", () => {});
 });

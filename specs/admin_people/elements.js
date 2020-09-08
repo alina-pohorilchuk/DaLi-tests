@@ -62,9 +62,27 @@ class Elements {
   }
 
   get notificationDangerText() {
-    return $("div > div > div.MuiAlert-message");
+    return $("div.MuiAlert-message");
   }
+
   getElipsisByEmail(email) {
+    return $(
+      `//td[text()='${email}']/ancestor::tr[contains(@class, 'MuiTableRow-root')]/td[5]//*[name()="svg"]`
+    );
+  }
+
+  getReactivateButton(email) {
+    return $(
+      `//td[text()='${email}']/ancestor::tr[contains(@class, 'MuiTableRow-root')]/td[5]//*[name()="svg"]`
+    );
+  }
+
+  get deactivatedTab() {
+    return $(
+      '//*[@id="root"]/main/div/div[2]/div/div[1]/div/div/div/button[2]'
+    );
+  }
+  getReactivateUserByEmail(email) {
     return $(
       `//td[text()='${email}']/ancestor::tr[contains(@class, 'MuiTableRow-root')]/td[5]//*[name()="svg"]`
     );
