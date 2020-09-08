@@ -1,6 +1,8 @@
 const AdminPeopleElements = require("./elements");
+const LoginElements = require("./elements");
 const assert = require("assert");
 const adminPeopleElements = new AdminPeopleElements();
+const loginElements = new LoginElements();
 
 class Actions {
   openMenu() {
@@ -37,6 +39,10 @@ class Actions {
 
   getPassword() {
     adminPeopleElements.passwordField.waitForDisplayed(10000);
+    console.log();
+    browser.waitUntil(
+      () => adminPeopleElements.passwordField.getAttribute("value") !== ""
+    );
     return adminPeopleElements.passwordField.getAttribute("value");
   }
 
@@ -51,6 +57,13 @@ class Actions {
     adminPeopleElements.closeModalWindow.waitForDisplayed(10000);
     adminPeopleElements.closeModalWindow.click();
   }
+  navigateToDeactivateUser() {
+    adminPeopleElements.deactivateUserButton.waitForDisplayed(10000);
+    adminPeopleElements.deactivateUserButton.waitForClickable();
+    adminPeopleElements.deactivateUserButton.moveTo();
+    adminPeopleElements.deactivateUserButton.click();
+    adminPeopleElements.confirmDeactivateButton.isDisplayed();
+  }
 
   confirmDeactivatingUser() {
     adminPeopleElements.confirmDeactivateButton.waitForDisplayed(10000);
@@ -60,6 +73,27 @@ class Actions {
   checkThatBrowseDataButtonExist() {
     adminPeopleElements.browseDataButton.waitForDisplayed(10000);
     assert.equal(adminPeopleElements.browseDataButton.isExisting(), true);
+  }
+
+  navigateToElipsisMenu(email) {
+    const elipsis = adminPeopleElements.getElipsisByEmail(email);
+    elipsis.waitForDisplayed(2000);
+    elipsis.scrollIntoView();
+    elipsis.waitForClickable();
+    elipsis.moveTo();
+    elipsis.click();
+    adminPeopleElements.deactivateUserButton.isDisplayed();
+  }
+
+  getNotficationDangerText() {
+    return loginElements.notificationDangerText.getText();
+  }
+
+  checkNotificationDeactivationAccount(notificationOfDeactivatingAccount) {
+    assert.equal(
+      this.getNotficationDangerText(),
+      notificationOfDeactivatingAccount
+    );
   }
 }
 

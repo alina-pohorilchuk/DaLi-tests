@@ -34,50 +34,31 @@ describe("Tests for create and inactivate user", () => {
 
   it("Deactivation of the user should make it impossible for him to log in", () => {
     const email = "user" + new Date().getTime() + "@gmail.com";
-    console.log(email);
     adminPeopleActions.navigateToAdminPage();
     adminPeopleActions.openCreateUserModal();
     adminPeopleActions.setFirstName(email);
     adminPeopleActions.setLastName(testData.lastNameField);
     adminPeopleActions.setEmail(email);
     adminPeopleActions.submitForm();
-    //console.log("1");
-    // const password = adminPeopleActions.getPassword();
-    // console.log("2");
-    // adminPeopleActions.closeModalWindow();
-    //doesn't work now, because new changes delete this step
 
-    console.log("waiting");
-    const dots = $(
-      `/html/body/div[1]/main/div/div[2]/div[2]/table/tbody/tr/td[2][contains(text(), "${email}")]/parent::tr/td[5]`
-    );
+    const password = adminPeopleActions.getPassword();
+    adminPeopleActions.closeModalWindow();
 
-    //dots.waitForDisplayed(10000);
-    //dots.click();
-    //dots.click();
-    //console.log("clicked");
-    //$("#admin-people-deactivateUser").waitForDisplayed(10000);
-    //$("#admin-people-deactivateUser").click();
-    //browser.pause(10000);
-
-    dots.waitUntil(() => {
-      if (!$("#admin-people-deactivateUser").isDisplayed()) {
-        console.log("clicked");
-        dots.click();
-        return false;
-      }
-      return true;
-    });
-    $("#admin-people-deactivateUser").waitForDisplayed(1000);
-    $("#admin-people-deactivateUser").click();
-    browser.pause(10000);
-
-    //const spinner = $('//*[@id="root"]/main/div/div[2]/div/svg');
-
+    adminPeopleActions.navigateToElipsisMenu(email);
+    adminPeopleActions.navigateToDeactivateUser();
+    console.log(1);
     adminPeopleActions.confirmDeactivatingUser();
+    console.log(2);
+    browser.reloadSession();
+    console.log(3);
+    browser.url(testData.signUpPageURL);
+    loginActions.userLogIn(email, password);
+    adminPeopleActions.checkNotificationDeactivationAccount(
+      testData.notificationOfDeactivatingAccount
+    );
   });
 
   xit("After reactivation, the user should be able to log in", () => {});
   xit("After changing users data, the user should be able to log in", () => {});
-  xit("After recet password, the user should be able to log in", () => {});
+  xit("After reset password, the user should be able to log in", () => {});
 });

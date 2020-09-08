@@ -1,10 +1,10 @@
 {
-    "signUpPageURL": "http://bsa-dali.s3-website.us-east-2.amazonaws.com/login",
+    "signUpPageURL": "http://localhost:3000/login",
     "expectedRedirectUrl": "http://bsa-dali.s3-website.us-east-2.amazonaws.com/",
     "browseDataUrl": "http://bsa-dali.s3-website.us-east-2.amazonaws.com/data-sources",
 
-    "validEmail": "dali@mail.com",
-    "validPassword": "b!#Sv5SS",
+    "validEmail": "mail@mail.com",
+    "validPassword": "Pa55word!",
     "invalidEmail": "test.user@daliee.com",
     "invalidPassword": "Password123!fbdb",
 
@@ -12,6 +12,7 @@
     "notificationOfNotFoundUser": "User with such email was not found.",
     "notificationOfForgotPassword": "Please contact an administrator to reset your password",
     "notificationOfNonUniqueGroupName": "name must be unique",
+    "notificationOfDeactivatingAccount": "User account deactivated",
 
 
     "firstNameField": "Test",

@@ -45,6 +45,10 @@ class Elements {
     );
   }
 
+  get deactivateUserButton() {
+    return $("#admin-people-deactivateUser");
+  }
+
   get confirmDeactivateButton() {
     return $("#deactivateUser-deactivate");
   }
@@ -58,8 +62,11 @@ class Elements {
   }
 
   get notificationDangerText() {
+    return $("div > div > div.MuiAlert-message");
+  }
+  getElipsisByEmail(email) {
     return $(
-      "#root > main > div > div.MuiSnackbar-root.MuiSnackbar-anchorOriginTopCenter > div > div.MuiAlert-message"
+      `//td[text()='${email}']/ancestor::tr[contains(@class, 'MuiTableRow-root')]/td[5]//*[name()="svg"]`
     );
   }
 }
