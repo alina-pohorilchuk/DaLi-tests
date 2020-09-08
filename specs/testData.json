@@ -14,13 +14,7 @@
     "notificationOfNonUniqueGroupName": "name must be unique",
     "notificationOfDeactivatingAccount": "User account deactivated",
 
-
-    "firstNameField": "Test",
-    "lastNameField": "User",
-
-
     "existingGroupName": "Administrators"
-  
 }
     
 

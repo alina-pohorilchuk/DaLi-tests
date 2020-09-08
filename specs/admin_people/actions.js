@@ -115,6 +115,30 @@ class Actions {
       reverse: true,
     });
   }
+
+  createUser() {
+    const email = "user" + new Date().getTime() + "@gmail.com";
+
+    this.openCreateUserModal();
+    this.setFirstName(email);
+    this.setLastName(email);
+    this.setEmail(email);
+    this.submitForm();
+
+    const password = this.getPassword();
+    this.closeModalWindow();
+
+    return {
+      email: email,
+      password: password,
+    };
+  }
+
+  deactivateUser(user) {
+    this.navigateToElipsisMenu(user.email);
+    this.navigateToDeactivateUser();
+    this.confirmDeactivatingUser();
+  }
 }
 
 module.exports = Actions;

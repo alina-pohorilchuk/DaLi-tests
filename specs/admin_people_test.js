@@ -11,6 +11,7 @@ describe("Tests for create and inactivate user", () => {
     browser.url(testData.signUpPageURL);
     loginActions.userLogIn(testData.validEmail, testData.validPassword);
   });
+
   afterEach(() => {
     browser.reloadSession();
   });
@@ -19,43 +20,52 @@ describe("Tests for create and inactivate user", () => {
     const email = "user" + new Date().getTime() + "@gmail.com";
     adminPeopleActions.navigateToAdminPage();
     adminPeopleActions.openCreateUserModal();
-    adminPeopleActions.setFirstName(testData.firstNameField);
-    adminPeopleActions.setLastName(testData.lastNameField);
+    adminPeopleActions.setFirstName(email);
+    adminPeopleActions.setLastName(email);
     adminPeopleActions.setEmail(email);
     adminPeopleActions.submitForm();
 
     const password = adminPeopleActions.getPassword();
     adminPeopleActions.closeModalWindow();
-    adminPeopleActions.navigateToSignOut();
 
+    browser.reloadSession();
+    browser.url(testData.signUpPageURL);
     loginActions.userLogIn(email, password);
     adminPeopleActions.checkThatBrowseDataButtonExist();
   });
 
   xit("Deactivation of the user should make it impossible for him to log in", () => {
-    const email = "user" + new Date().getTime() + "@gmail.com";
     adminPeopleActions.navigateToAdminPage();
-    adminPeopleActions.openCreateUserModal();
-    adminPeopleActions.setFirstName(email);
-    adminPeopleActions.setLastName(testData.lastNameField);
-    adminPeopleActions.setEmail(email);
-    adminPeopleActions.submitForm();
+    const user = adminPeopleActions.createUser();
 
-    const password = adminPeopleActions.getPassword();
-    adminPeopleActions.closeModalWindow();
-
-    adminPeopleActions.navigateToElipsisMenu(email);
+    adminPeopleActions.navigateToElipsisMenu(user.email);
     adminPeopleActions.navigateToDeactivateUser();
     adminPeopleActions.confirmDeactivatingUser();
+
     browser.reloadSession();
     browser.url(testData.signUpPageURL);
-    loginActions.userLogIn(email, password);
+    loginActions.userLogIn(user.email, user.password);
     adminPeopleActions.checkNotificationDeactivationAccount(
       testData.notificationOfDeactivatingAccount
     );
   });
 
-  it("After reactivation, the user should be able to log in", () => {
+  xit("After reactivation, the user should be able to log in", () => {
+    adminPeopleActions.navigateToAdminPage();
+    const user = adminPeopleActions.createUser();
+    adminPeopleActions.deactivateUser(user);
+
+    adminPeopleActions.waitWhenNotificationDissapears();
+    adminPeopleActions.clickToDeactivatedTab();
+    adminPeopleActions.clickReactivateUserButton(user.email);
+
+    browser.reloadSession();
+    browser.url(testData.signUpPageURL);
+    loginActions.userLogIn(user.email, user.password);
+    loginActions.checkThatBrowseDataButtonExist();
+  });
+
+  xit("After changing users data, the user should be able to log in", () => {
     const email = "user" + new Date().getTime() + "@gmail.com";
     adminPeopleActions.navigateToAdminPage();
     adminPeopleActions.openCreateUserModal();
@@ -68,20 +78,7 @@ describe("Tests for create and inactivate user", () => {
     adminPeopleActions.closeModalWindow();
 
     adminPeopleActions.navigateToElipsisMenu(email);
-    adminPeopleActions.navigateToDeactivateUser();
-    adminPeopleActions.confirmDeactivatingUser();
-
-    adminPeopleActions.waitWhenNotificationDissapears();
-
-    adminPeopleActions.clickToDeactivatedTab();
-    adminPeopleActions.clickReactivateUserButton(email);
-
-    browser.reloadSession();
-
-    browser.url(testData.signUpPageURL);
-    loginActions.userLogIn(email, password);
-    loginActions.checkThatBrowseDataButtonExist();
   });
-  xit("After changing users data, the user should be able to log in", () => {});
+
   xit("After reset password, the user should be able to log in", () => {});
 });
