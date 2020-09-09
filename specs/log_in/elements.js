@@ -6,16 +6,16 @@ class Elements {
     return $("input[type = password]");
   }
   get signInButton() {
-    return $("button.btn");
+    return $("#login-signIn");
   }
   get notificationDangerText() {
     return $(".MuiAlert-message");
   }
   get checkbox() {
-    return $("input[type = checkbox]");
+    return $("#login-rememberMe");
   }
   get forgotPassword() {
-    return $("button.forgot-pswd");
+    return $("#login-forgot-pswd");
   }
   get notificationOfForgotPassword() {
     return $(".modal-body");
@@ -24,7 +24,7 @@ class Elements {
     return $("button.close-btn");
   }
   get browseDataButton() {
-    return $("#root > header:nth-child(1) > div.header-controls > div");
+    return $("#header-browseData");
   }
 }
 

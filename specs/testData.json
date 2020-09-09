@@ -1,10 +1,10 @@
 {
-    "signUpPageURL": "http://localhost:3000/login",
-    "expectedRedirectUrl": "http://bsa-dali.s3-website.us-east-2.amazonaws.com/",
+    "signUpPageURL": "http://bsa-dali.s3-website.us-east-2.amazonaws.com/login",
+    "expectedRedirectUrl": "http://bsa-dali.s3-website.us-east-2.amazonaws.com",
     "browseDataUrl": "http://bsa-dali.s3-website.us-east-2.amazonaws.com/data-sources",
 
-    "validEmail": "mail@mail.com",
-    "validPassword": "Pa55word!",
+    "validEmail": "test.user1@dali.com",
+    "validPassword": "p~l4J?O8",
     "invalidEmail": "test.user@daliee.com",
     "invalidPassword": "Password123!fbdb",
 

@@ -20,17 +20,12 @@ describe("Tests for create and remove groups", () => {
     const groupName = new Date().getTime();
     adminPeopleActions.navigateToAdminPage();
     adminGroupsActions.navigateToSideBarGroups();
-    console.log(1);
     adminGroupsActions.navigateToCreateGroupButton();
-    console.log(2);
     adminGroupsActions.addGroupName(groupName);
-    console.log(3);
     adminGroupsActions.clickAddGroupButton();
-    console.log(4);
     browser.pause(10000);
-    const groupDots = $(
-      `/html/body/div[1]/main/div/div[2]/div[2]/table/tbody/tr/td[1]/a[contains(text(), "${groupName}")]/ancestor::tr/td[3]`
-    );
+    const groupDots = $();
+    `//tr/td[1]/a[contains(text(), "${groupName}")]/ancestor::tr[contains(@class, 'MuiTableRow-root')]/td[3]//*[name()="svg"]`;
     groupDots.waitForDisplayed(10000);
     groupDots.scrollIntoView(10000);
     groupDots.click();

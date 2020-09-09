@@ -21,7 +21,7 @@ class Elements {
   }
 
   get buttonAddSomeone() {
-    return $("button.MuiButtonBase-root.MuiButton-root.MuiButton-contained");
+    return $("span.MuiButton-label");
   }
   get firstNameField() {
     return $("#createUser-firstName");
@@ -37,6 +37,9 @@ class Elements {
   }
   get browseDataButton() {
     return $("#root > header:nth-child(1) > div.header-controls > div");
+  }
+  get addDashboardButton() {
+    return $("#header-addMenu");
   }
 
   get modalWindow() {
@@ -78,9 +81,7 @@ class Elements {
   }
 
   get deactivatedTab() {
-    return $(
-      '//*[@id="root"]/main/div/div[2]/div/div[1]/div/div/div/button[2]'
-    );
+    return $("//div/button[2]");
   }
   getReactivateUserByEmail(email) {
     return $(

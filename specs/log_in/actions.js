@@ -9,9 +9,7 @@ class Actions {
   setPassword(password) {
     loginElements.fieldPassword.setValue(password);
   }
-  clickButtonSignIn() {
-    loginElements.signInButton.click();
-  }
+
   clickCheckbox() {
     loginElements.checkbox.click();
   }
@@ -25,7 +23,8 @@ class Actions {
   userLogIn(email, password) {
     this.setEmail(email);
     this.setPassword(password);
-    this.clickButtonSignIn();
+    loginElements.signInButton.waitForClickable();
+    loginElements.signInButton.click();
   }
 
   userLogInWithCheckbox(email, password) {

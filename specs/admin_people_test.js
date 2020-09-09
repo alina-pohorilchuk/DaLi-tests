@@ -30,8 +30,9 @@ describe("Tests for create and inactivate user", () => {
 
     browser.reloadSession();
     browser.url(testData.signUpPageURL);
+    console.log(3);
     loginActions.userLogIn(email, password);
-    adminPeopleActions.checkThatBrowseDataButtonExist();
+    adminPeopleActions.checkThatAddDashboardButtonExists();
   });
 
   xit("Deactivation of the user should make it impossible for him to log in", () => {
@@ -41,7 +42,8 @@ describe("Tests for create and inactivate user", () => {
     adminPeopleActions.navigateToElipsisMenu(user.email);
     adminPeopleActions.navigateToDeactivateUser();
     adminPeopleActions.confirmDeactivatingUser();
-
+    adminPeopleActions.waitForNotificationDisplayed();
+    adminPeopleActions.waitWhenNotificationDissapears();
     browser.reloadSession();
     browser.url(testData.signUpPageURL);
     loginActions.userLogIn(user.email, user.password);

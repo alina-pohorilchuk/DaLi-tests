@@ -17,7 +17,7 @@ describe("Tests for login page", () => {
     loginActions.setEmail(testData.validEmail);
     loginActions.setPassword(testData.validPassword);
     loginActions.clickButtonSignIn();
-    loginActions.checkThatBrowseDataButtonExist();
+    loginActions.checkThatAddDashboardButtonExists();
   });
   xit("Log in to of a previously registered user with valid email and invalid password should be failed", () => {
     loginActions.setEmail(testData.validEmail);
@@ -44,7 +44,7 @@ describe("Tests for login page", () => {
       testData.notificationOfForgotPassword
     );
     loginActions.clickCloseModalButton();
-    loginActions.checkThatSignInButtonExist();
+    loginActions.checkThatAddDashboardButtonExists();
   });
 
   // does not work yet, as the functionality is not ready yet. the test will be finalized later

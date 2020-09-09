@@ -75,6 +75,11 @@ class Actions {
     assert.equal(adminPeopleElements.browseDataButton.isExisting(), true);
   }
 
+  checkThatAddDashboardButtonExists() {
+    adminPeopleElements.addDashboardButton.waitForDisplayed(5000);
+    assert.equal(adminPeopleElements.addDashboardButton.isExisting(), true);
+  }
+
   navigateToElipsisMenu(email) {
     const elipsis = adminPeopleElements.getElipsisByEmail(email);
     elipsis.waitForDisplayed(2000);
@@ -89,6 +94,10 @@ class Actions {
     return loginElements.notificationDangerText.getText();
   }
 
+  waitForNotificationDisplayed() {
+    loginElements.notificationDangerText.waitForDisplayed(3000);
+  }
+
   checkNotificationDeactivationAccount(notificationOfDeactivatingAccount) {
     assert.equal(
       this.getNotficationDangerText(),
@@ -97,7 +106,8 @@ class Actions {
   }
 
   clickToDeactivatedTab() {
-    adminPeopleElements.deactivatedTab.scrollIntoView();
+    //scroll work, but header overlaps deactivated tab
+    browser.url(browser.getUrl());
     adminPeopleElements.deactivatedTab.moveTo();
     adminPeopleElements.deactivatedTab.click();
   }
@@ -111,9 +121,12 @@ class Actions {
   }
 
   waitWhenNotificationDissapears() {
-    adminPeopleElements.notificationDangerText.waitForDisplayed({
-      reverse: true,
-    });
+    adminPeopleElements.notificationDangerText.waitForDisplayed(
+      {
+        reverse: true,
+      },
+      5000
+    );
   }
 
   createUser() {
