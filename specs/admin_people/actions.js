@@ -20,15 +20,15 @@ class Actions {
     adminPeopleElements.buttonAddSomeone.click();
   }
   setFirstName(value) {
-    adminPeopleElements.firstNameField.waitForDisplayed(10000);
+    adminPeopleElements.firstNameField.waitForDisplayed(4000);
     adminPeopleElements.firstNameField.setValue(value);
   }
   setLastName(value) {
-    adminPeopleElements.lastNameField.waitForDisplayed(10000);
+    adminPeopleElements.lastNameField.waitForDisplayed(4000);
     adminPeopleElements.lastNameField.setValue(value);
   }
   setEmail(value) {
-    adminPeopleElements.emailField.waitForDisplayed(10000);
+    adminPeopleElements.emailField.waitForDisplayed(4000);
     adminPeopleElements.emailField.setValue(value);
   }
 
@@ -39,7 +39,6 @@ class Actions {
 
   getPassword() {
     adminPeopleElements.passwordField.waitForDisplayed(10000);
-    console.log();
     browser.waitUntil(
       () => adminPeopleElements.passwordField.getAttribute("value") !== ""
     );
@@ -63,6 +62,22 @@ class Actions {
     adminPeopleElements.deactivateUserButton.moveTo();
     adminPeopleElements.deactivateUserButton.click();
     adminPeopleElements.confirmDeactivateButton.isDisplayed();
+  }
+
+  navigateToEditUser() {
+    adminPeopleElements.editUserButton.waitForDisplayed();
+    adminPeopleElements.editUserButton.waitForClickable();
+    adminPeopleElements.editUserButton.moveTo();
+    adminPeopleElements.editUserButton.click();
+    adminPeopleElements.EditUserEmail.isDisplayed();
+  }
+
+  navigateToResetPassword() {
+    adminPeopleElements.resetPasswordButton.waitForDisplayed();
+    adminPeopleElements.resetPasswordButton.waitForClickable();
+    adminPeopleElements.resetPasswordButton.moveTo();
+    adminPeopleElements.resetPasswordButton.click();
+    adminPeopleElements.confirmResetingPassword.isDisplayed();
   }
 
   confirmDeactivatingUser() {
@@ -112,12 +127,32 @@ class Actions {
     adminPeopleElements.deactivatedTab.click();
   }
 
+  changeUserEmail(newEmail) {
+    adminPeopleElements.EditUserEmail.waitForDisplayed(2000);
+    // for some reason it will append new email after old one
+    // even clearValue method is used
+    // so here is workaround to test it
+    // adminPeopleElements.EditUserEmail.setValue(newEmail);
+    adminPeopleElements.EditUserEmail.setValue("a");
+    adminPeopleElements.EditUserEmail.waitForClickable();
+    adminPeopleElements.EditUserEmail.click();
+  }
+
   clickReactivateUserButton(email) {
     const reactivate = adminPeopleElements.getReactivateButton(email);
     reactivate.waitForDisplayed(2000);
     reactivate.waitForClickable();
     reactivate.moveTo();
     reactivate.click();
+  }
+
+  clickUpdateButton() {
+    adminPeopleElements.updateButton.waitForClickable(2000);
+    adminPeopleElements.updateButton.click();
+  }
+
+  clickConfirmResetPassword() {
+    adminPeopleElements.confirmResetingPassword.click();
   }
 
   waitWhenNotificationDissapears() {

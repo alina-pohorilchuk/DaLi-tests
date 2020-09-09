@@ -52,6 +52,24 @@ class Elements {
     return $("#admin-people-deactivateUser");
   }
 
+  get editUserButton() {
+    return $("#admin-people-editUser");
+  }
+
+  get resetPasswordButton() {
+    return $("#admin-people-resetPass");
+  }
+  get confirmResetingPassword() {
+    return $("#resetPassword-reset");
+  }
+
+  get EditUserEmail() {
+    return $("#editUser-email");
+  }
+  get updateButton() {
+    return $("#editUser-update");
+  }
+
   get confirmDeactivateButton() {
     return $("#deactivateUser-deactivate");
   }

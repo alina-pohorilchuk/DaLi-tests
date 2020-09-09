@@ -68,19 +68,33 @@ describe("Tests for create and inactivate user", () => {
   });
 
   xit("After changing users data, the user should be able to log in", () => {
-    const email = "user" + new Date().getTime() + "@gmail.com";
     adminPeopleActions.navigateToAdminPage();
-    adminPeopleActions.openCreateUserModal();
-    adminPeopleActions.setFirstName(email);
-    adminPeopleActions.setLastName(testData.lastNameField);
-    adminPeopleActions.setEmail(email);
-    adminPeopleActions.submitForm();
+    const user = adminPeopleActions.createUser();
 
-    const password = adminPeopleActions.getPassword();
-    adminPeopleActions.closeModalWindow();
-
-    adminPeopleActions.navigateToElipsisMenu(email);
+    adminPeopleActions.navigateToElipsisMenu(user.email);
+    adminPeopleActions.navigateToEditUser();
+    const newEmail = user.email + "a";
+    adminPeopleActions.changeUserEmail();
+    adminPeopleActions.clickUpdateButton();
+    adminPeopleActions.waitForNotificationDisplayed();
+    browser.reloadSession();
+    browser.url(testData.signUpPageURL);
+    loginActions.userLogIn(newEmail, user.password);
+    loginActions.checkThatBrowseDataButtonExist();
   });
 
-  xit("After reset password, the user should be able to log in", () => {});
+  it("After reset password, the user should be able to log in", () => {
+    adminPeopleActions.navigateToAdminPage();
+    const user = adminPeopleActions.createUser();
+
+    adminPeopleActions.navigateToElipsisMenu(user.email);
+    adminPeopleActions.navigateToResetPassword();
+    adminPeopleActions.clickConfirmResetPassword();
+    const newPassword = adminPeopleActions.getPassword();
+
+    browser.reloadSession();
+    browser.url(testData.signUpPageURL);
+    loginActions.userLogIn(user.email, newPassword);
+    loginActions.checkThatBrowseDataButtonExist();
+  });
 });
