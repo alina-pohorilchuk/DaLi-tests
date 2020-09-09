@@ -6,19 +6,23 @@ class Actions {
   navigateToSideBarGroups() {
     adminGroupsElements.sideBarGroups.waitForDisplayed(10000);
     adminGroupsElements.sideBarGroups.click();
+    adminGroupsElements.createGroupButton.isDisplayed();
   }
-  navigateToCreateGroupButton() {
+  clickCreateGroupButton() {
     adminGroupsElements.createGroupButton.waitForDisplayed(10000);
     adminGroupsElements.createGroupButton.click();
-    adminGroupsElements.createGroupButton.waitForDisplayed(10000);
+    adminGroupsElements.groupNameField.isDisplayed();
   }
+
   addGroupName(groupName) {
     adminGroupsElements.groupNameField.waitForDisplayed(10000);
     adminGroupsElements.groupNameField.setValue(groupName);
+    adminGroupsElements.addGroupButton.isDisplayed();
   }
   clickAddGroupButton() {
-    adminGroupsElements.AddGroupButton.waitForEnabled(10000);
-    adminGroupsElements.AddGroupButton.click();
+    adminGroupsElements.addGroupButton.waitForEnabled(10000);
+    adminGroupsElements.addGroupButton.moveTo();
+    adminGroupsElements.addGroupButton.click();
   }
 
   getNotficationDangerText() {
@@ -30,6 +34,14 @@ class Actions {
       this.getNotficationDangerText(),
       notificationOfNonUniqueGroupName
     );
+  }
+
+  clickToGroupNameButton(groupName) {
+    const groupNameButton = adminGroupsElements.getGroupNameButton(groupName);
+    groupNameButton.waitForDisplayed(4000);
+    groupNameButton.scrollIntoView();
+    groupNameButton.moveTo();
+    groupNameButton.click();
   }
 }
 

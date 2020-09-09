@@ -73,7 +73,9 @@ describe("Tests for create and inactivate user", () => {
 
     adminPeopleActions.navigateToElipsisMenu(user.email);
     adminPeopleActions.navigateToEditUser();
+
     const newEmail = user.email + "a";
+
     adminPeopleActions.changeUserEmail();
     adminPeopleActions.clickUpdateButton();
     adminPeopleActions.waitForNotificationDisplayed();
@@ -83,7 +85,7 @@ describe("Tests for create and inactivate user", () => {
     loginActions.checkThatBrowseDataButtonExist();
   });
 
-  it("After reset password, the user should be able to log in", () => {
+  xit("After reset password, the user should be able to log in", () => {
     adminPeopleActions.navigateToAdminPage();
     const user = adminPeopleActions.createUser();
 

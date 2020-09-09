@@ -16,19 +16,25 @@ describe("Tests for create and remove groups", () => {
   afterEach(() => {
     browser.reloadSession();
   });
-  xit("Creating new group witn unique name should be successful", () => {
+
+  it("Creating new group witn unique name should be successful", () => {
     const groupName = new Date().getTime();
     adminPeopleActions.navigateToAdminPage();
     adminGroupsActions.navigateToSideBarGroups();
-    adminGroupsActions.navigateToCreateGroupButton();
+    adminGroupsActions.clickCreateGroupButton();
+    console.log(1);
     adminGroupsActions.addGroupName(groupName);
+    console.log(2);
     adminGroupsActions.clickAddGroupButton();
+    console.log(3);
     browser.pause(10000);
-    const groupDots = $();
-    `//tr/td[1]/a[contains(text(), "${groupName}")]/ancestor::tr[contains(@class, 'MuiTableRow-root')]/td[3]//*[name()="svg"]`;
-    groupDots.waitForDisplayed(10000);
-    groupDots.scrollIntoView(10000);
-    groupDots.click();
+    //const groupDots = $();
+    //`//tr/td[1]/a[contains(text(), "${groupName}")]/ancestor::tr[contains(@class, 'MuiTableRow-root')]/td[3]//*[name()="svg"]`;
+    //groupDots.waitForDisplayed(4000);
+    //groupDots.scrollIntoView(4000);
+    //groupDots.moveTo();
+    //groupDots.click();
+    adminGroupsActions.clickToGroupNameButton(groupName);
   });
 
   xit("Creating new group witn not unique name shouldn't be successful", () => {

@@ -3,14 +3,18 @@ class Elements {
     return $("#admin-sideBar-groups");
   }
   get createGroupButton() {
-    return $("#admin-group-createGroup");
+    return $("//div[2]/div[1]/button/span[1]");
   }
   get groupNameField() {
-    return $("#admin-createGroup-groupName");
+    return $("//div/input");
   }
 
-  get AddGroupButton() {
-    return $("#admin-createGroup-add");
+  get addGroupButton() {
+    return $("//div[2]/button[2]");
+  }
+
+  getGroupNameButton(groupName) {
+    return $(`//td[1]/a[contains(text(), "${groupName}")]`);
   }
 }
 
