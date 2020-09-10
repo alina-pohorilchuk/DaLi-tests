@@ -10,6 +10,7 @@ class Actions {
   }
   clickCreateGroupButton() {
     adminGroupsElements.createGroupButton.waitForDisplayed(10000);
+    adminGroupsElements.createGroupButton.moveTo();
     adminGroupsElements.createGroupButton.click();
     adminGroupsElements.groupNameField.isDisplayed();
   }
@@ -19,6 +20,23 @@ class Actions {
     adminGroupsElements.groupNameField.setValue(groupName);
     adminGroupsElements.addGroupButton.isDisplayed();
   }
+
+  clickEditNameButton() {
+    adminGroupsElements.groupEditNameButton.waitForDisplayed(4000);
+    adminGroupsElements.groupEditNameButton.click();
+  }
+
+  editGroupName() {
+    adminGroupsElements.groupNameField.waitForDisplayed(10000);
+    adminGroupsElements.groupNameField.setValue("a");
+    adminGroupsElements.addGroupButton.isDisplayed();
+  }
+
+  clickConfirmEditButton() {
+    adminGroupsElements.confirmEditButton.waitForDisplayed(4000);
+    adminGroupsElements.confirmEditButton.click();
+  }
+
   clickAddGroupButton() {
     adminGroupsElements.addGroupButton.waitForEnabled(10000);
     adminGroupsElements.addGroupButton.moveTo();
@@ -44,9 +62,25 @@ class Actions {
     groupNameButton.moveTo();
     groupNameButton.click();
   }
+
+  clickAddMembersButton() {
+    adminGroupsElements.addMembersButton.waitForDisplayed(5000);
+    adminGroupsElements.addMembersButton.click();
+  }
+
   checkThatAddMembersButtonExists() {
     adminGroupsElements.addMembersButton.waitForDisplayed(5000);
     assert.equal(adminGroupsElements.addMembersButton.isExisting(), true);
+  }
+
+  navigateToElipsisMenu(groupName) {
+    const elipsis = adminGroupsElements.getElipsisByName(groupName);
+    elipsis.waitForDisplayed(2000);
+    elipsis.scrollIntoView();
+    elipsis.waitForClickable();
+    elipsis.moveTo();
+    elipsis.click();
+    adminGroupsElements.groupEditNameButton.isDisplayed();
   }
 }
 
