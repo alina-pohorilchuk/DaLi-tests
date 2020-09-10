@@ -17,30 +17,21 @@ describe("Tests for create and remove groups", () => {
     browser.reloadSession();
   });
 
-  it("Creating new group witn unique name should be successful", () => {
+  xit("Creating new group witn unique name should be successful", () => {
     const groupName = new Date().getTime();
     adminPeopleActions.navigateToAdminPage();
     adminGroupsActions.navigateToSideBarGroups();
     adminGroupsActions.clickCreateGroupButton();
-    console.log(1);
     adminGroupsActions.addGroupName(groupName);
-    console.log(2);
     adminGroupsActions.clickAddGroupButton();
-    console.log(3);
-    browser.pause(10000);
-    //const groupDots = $();
-    //`//tr/td[1]/a[contains(text(), "${groupName}")]/ancestor::tr[contains(@class, 'MuiTableRow-root')]/td[3]//*[name()="svg"]`;
-    //groupDots.waitForDisplayed(4000);
-    //groupDots.scrollIntoView(4000);
-    //groupDots.moveTo();
-    //groupDots.click();
     adminGroupsActions.clickToGroupNameButton(groupName);
+    adminGroupsActions.checkThatAddMembersButtonExists();
   });
 
   xit("Creating new group witn not unique name shouldn't be successful", () => {
     adminPeopleActions.navigateToAdminPage();
     adminGroupsActions.navigateToSideBarGroups();
-    adminGroupsActions.navigateToCreateGroupButton();
+    adminGroupsActions.clickCreateGroupButton();
     adminGroupsActions.addGroupName(testData.existingGroupName);
     adminGroupsActions.clickAddGroupButton();
     adminGroupsActions.checkNotificationNonUniqueGroupName();
@@ -51,4 +42,10 @@ describe("Tests for create and remove groups", () => {
   xit("Removing members from the group should be successful", () => {});
   xit("Changing the name of the group should be successful", () => {});
   xit("Removing group should be successful", () => {});
+  //const groupDots = $();
+  //`//tr/td[1]/a[contains(text(), "${groupName}")]/ancestor::tr[contains(@class, 'MuiTableRow-root')]/td[3]//*[name()="svg"]`;
+  //groupDots.waitForDisplayed(4000);
+  //groupDots.scrollIntoView(4000);
+  //groupDots.moveTo();
+  //groupDots.click();
 });

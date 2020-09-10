@@ -16,6 +16,12 @@ class Elements {
   getGroupNameButton(groupName) {
     return $(`//td[1]/a[contains(text(), "${groupName}")]`);
   }
+  get addMembersButton() {
+    return $("//div/div[1]/button");
+  }
+  get notificationDangerText() {
+    return $("div.MuiAlert-message");
+  }
 }
 
 module.exports = Elements;

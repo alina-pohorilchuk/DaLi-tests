@@ -26,7 +26,8 @@ class Actions {
   }
 
   getNotficationDangerText() {
-    return adminGroupsElements.notificationDangerText.getText();
+    adminGroupsElements.notificationDangerText.waitForDisplayed(4000);
+    adminGroupsElements.notificationDangerText.getText();
   }
 
   checkNotificationNonUniqueGroupName(notificationOfNonUniqueGroupName) {
@@ -42,6 +43,10 @@ class Actions {
     groupNameButton.scrollIntoView();
     groupNameButton.moveTo();
     groupNameButton.click();
+  }
+  checkThatAddMembersButtonExists() {
+    adminGroupsElements.addMembersButton.waitForDisplayed(5000);
+    assert.equal(adminGroupsElements.addMembersButton.isExisting(), true);
   }
 }
 
