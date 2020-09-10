@@ -3,7 +3,7 @@ class Elements {
     return $("#header-gear");
   }
   get menuBarAdminPage() {
-    return $("#header-gear-admin");
+    return $("header-gear > span.MuiIconButton-label > svg");
   }
 
   get adminPage() {

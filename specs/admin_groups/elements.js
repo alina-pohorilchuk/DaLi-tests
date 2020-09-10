@@ -13,8 +13,12 @@ class Elements {
     return $("//div[2]/button[2]");
   }
 
-  get groupEditNameButton() {
+  get EditGroupNameButton() {
     return $("//div[3]/ul/li[1]");
+  }
+
+  get removeGroupButton() {
+    return $("//div[3]/ul/li[2]");
   }
 
   get confirmEditButton() {

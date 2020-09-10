@@ -38,7 +38,7 @@ describe("Tests for login page", () => {
       testData.notificationOfNotFoundUser
     );
   });
-  xit("Try to log in, using button 'forgot password'", () => {
+  xit("Try to log in, using button 'forgot password should show message with instructions'", () => {
     loginActions.clickForgotPassword();
     loginActions.checkForgotPasswordMessage(
       testData.notificationOfForgotPassword
@@ -48,12 +48,11 @@ describe("Tests for login page", () => {
   });
 
   // does not work yet, as the functionality is not ready yet. the test will be finalized later
-  xit("Log in, using 'remember me' checkbox", () => {
+  it("Log in, using 'remember me' checkbox", () => {
     loginActions.userLogInWithCheckbox(
       testData.validEmail,
       testData.validPassword
     );
-    browser.pause(1000);
     browser.reloadSession();
     browser.url(testData.expectedRedirectUrl);
     browser.waitUntil(function () {

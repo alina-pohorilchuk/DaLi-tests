@@ -21,9 +21,13 @@ class Actions {
     adminGroupsElements.addGroupButton.isDisplayed();
   }
 
-  clickEditNameButton() {
-    adminGroupsElements.groupEditNameButton.waitForDisplayed(4000);
-    adminGroupsElements.groupEditNameButton.click();
+  clickEditGroupNameButton() {
+    adminGroupsElements.EditGroupNameButton.waitForDisplayed(4000);
+    adminGroupsElements.EditGroupNameButton.click();
+  }
+  clickRemoveGroupButton() {
+    adminGroupsElements.removeGroupButton.waitForDisplayed(4000);
+    adminGroupsElements.removeGroupButton.click();
   }
 
   editGroupName() {

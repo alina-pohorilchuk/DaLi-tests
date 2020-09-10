@@ -10,7 +10,7 @@ class Actions {
   }
 
   navigateToAdminPage() {
-    adminPeopleElements.menuBar.waitForDisplayed(10000);
+    adminPeopleElements.menuBar.waitForDisplayed(4000);
     adminPeopleElements.menuBar.click();
     adminPeopleElements.adminPage.waitForDisplayed(10000);
     adminPeopleElements.adminPage.click();

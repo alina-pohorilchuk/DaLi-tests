@@ -37,25 +37,7 @@ describe("Tests for create and remove groups", () => {
     adminGroupsActions.checkNotificationNonUniqueGroupName();
   });
 
-  xit("Adding member to the group should be successful", () => {
-    const groupName = new Date().getTime();
-    adminPeopleActions.navigateToAdminPage();
-    adminGroupsActions.navigateToSideBarGroups();
-    adminGroupsActions.clickCreateGroupButton();
-    adminGroupsActions.addGroupName(groupName);
-    adminGroupsActions.clickAddGroupButton();
-    adminGroupsActions.clickToGroupNameButton(groupName);
-    adminGroupsActions.clickAddMembersButton();
-    $("//form/div[1]/div/div/div[1]").waitForDisplayed(4000);
-    $("//form/div[1]/div/div/div[1]").scrollIntoView();
-    $("//form/div[1]/div/div/div[1]").click();
-    $("//form/div[1]/div/div/div[1]").addValue("Test User");
-    browser.pause(4000);
-    $("div.css-26l3qy-menu").getHTML();
-  });
-
-  xit("Removing members from the group should be successful", () => {});
-  it("Changing the name of the group should be successful", () => {
+  xit("Changing the name of the group should be successful", () => {
     const groupName = new Date().getTime();
     adminPeopleActions.navigateToAdminPage();
     adminGroupsActions.navigateToSideBarGroups();
@@ -64,18 +46,22 @@ describe("Tests for create and remove groups", () => {
     adminGroupsActions.clickAddGroupButton();
 
     adminGroupsActions.navigateToElipsisMenu(groupName);
-    adminGroupsActions.clickEditNameButton();
+    adminGroupsActions.clickEditGroupNameButton();
     adminGroupsActions.editGroupName();
     adminGroupsActions.clickConfirmEditButton();
 
     adminGroupsActions.clickToGroupNameButton(groupName);
     adminGroupsActions.checkThatAddMembersButtonExists();
   });
-  xit("Removing group should be successful", () => {});
-  //const groupDots = $();
-  //`//tr/td[1]/a[contains(text(), "${groupName}")]/ancestor::tr[contains(@class, 'MuiTableRow-root')]/td[3]//*[name()="svg"]`;
-  //groupDots.waitForDisplayed(4000);
-  //groupDots.scrollIntoView(4000);
-  //groupDots.moveTo();
-  //groupDots.click();
+  xit("Removing group should be successful", () => {
+    const groupName = new Date().getTime();
+    adminPeopleActions.navigateToAdminPage();
+    adminGroupsActions.navigateToSideBarGroups();
+    adminGroupsActions.clickCreateGroupButton();
+    adminGroupsActions.addGroupName(groupName);
+    adminGroupsActions.clickAddGroupButton();
+
+    adminGroupsActions.navigateToElipsisMenu(groupName);
+    adminGroupsActions.clickRemoveGroupButton();
+  });
 });
